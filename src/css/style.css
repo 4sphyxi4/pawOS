@@ -50,6 +50,13 @@ body {
   padding: 20px;
 }
 
+/* Reusable utility styles */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 /* Navigation Styles */
 
 nav {
