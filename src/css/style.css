@@ -53,32 +53,65 @@ body {
 /* Reusable utility styles */
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-/* Navigation Styles */
+/* Navbar */
 
 nav {
-  background: var(--color-white-soft);
-  padding: 15px 30px;
-  border-radius: 8px;
-  box-shadow: var(--color-shadow-soft) 0px 4px 12px;
-  margin-bottom: 30px;
 }
+
 nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
 }
+
 nav ul li {
-  font-weight: bold;
 }
+
 nav ul li a {
-  text-decoration: none;
-  color: var(--color-text-main);
-  transition: color 0.3s ease;
 }
+
 nav ul li a:hover {
-  color: var(--color-purple-main);
+}
+
+/* Main Content */
+
+main {
+}
+
+/* Hero Section */
+
+#hero {
+}
+
+.hero-content {
+}
+
+.hero-buttons {
+}
+/* About Section */
+
+#about {
+}
+
+.about-content {
+}
+
+/* Featured Section */
+
+#featured {
+}
+
+.featured-content {
+}
+
+/* Projects Section */
+
+#projects {
+}
+
+.projects-content {
+}
+
+/* Footer */
+
+footer {
 }
