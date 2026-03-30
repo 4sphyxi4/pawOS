@@ -47,26 +47,41 @@ body {
   color: #333;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  padding: 20px;
 }
 
 /* Reusable utility styles */
 
+section {
+  padding: 4rem 1rem;
+}
+
 .container {
+  width: 90%;
+  margin: 0 auto;
 }
 
 /* Navbar */
 
 nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 }
 
 nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.7rem;
 }
 
 nav ul li {
 }
 
 nav ul li a {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-weight: bold;
 }
 
 nav ul li a:hover {
@@ -80,13 +95,31 @@ main {
 /* Hero Section */
 
 #hero {
+  position: relative;
+  min-height: clamp(24rem, 80vh, 52rem);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: url("../assets/hero-image.jpg") 82% center / cover no-repeat;
 }
 
 .hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
 }
 
-.hero-buttons {
+.hero-btns {
+  display: flex;
+  gap: 1rem;
 }
+
+.hero-btn {
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+}
+
 /* About Section */
 
 #about {
@@ -114,4 +147,8 @@ main {
 /* Footer */
 
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
