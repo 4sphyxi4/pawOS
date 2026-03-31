@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Animal Centre</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Nunito:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body>
@@ -13,11 +17,15 @@
           <li><a href="#hero">Home</a></li>
 
           <li>
-            <button class="dropdown-btn">Pets</button>
+            <button class="primary-btn">Pets</button>
             <div class="dropdown-content">
               <ul>
-                <li><a href="animal-catalogue.html">Browse our pets</a></li>
-                <li><button class="register-btn">Register a pet</button></li>
+                <li class="pets-menu">
+                  <a href="animal-catalogue.html">Browse our pets</a>
+                </li>
+                <li class="pets-menu">
+                  <button class="primary-btn">Register a pet</button>
+                </li>
               </ul>
             </div>
           </li>
@@ -34,8 +42,10 @@
             <h1>Hero title</h1>
             <p>Short hero text - Short hero text</p>
             <div class="hero-btns">
-              <a href="animal-catalogue.html">Browse animals</a>
-              <button class="hero-register-btn">Register animal</button>
+              <a href="animal-catalogue.html" class="hero-btn"
+                >Browse our animals</a
+              >
+              <button class="primary-btn hero-btn">Register a pet</button>
             </div>
           </div>
         </div>
