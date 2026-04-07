@@ -1,3 +1,7 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
+
+
 function Taskbar() {
   return (
     <footer className="taskbar">
@@ -19,6 +23,7 @@ function Taskbar() {
 
       <div className="taskbar-right">
         <div className="system-tray">
+         <FontAwesomeIcon icon={faVolumeHigh} className='volume-icon'/>
           <span>12:45</span>
           <span>07/04/2026</span>
         </div>
