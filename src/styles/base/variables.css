@@ -1,0 +1,42 @@
+:root {
+  --color-purple-main: #7554a0;
+  --color-purple-soft: #b38bd3;
+  --color-blue-soft: #8d84c7;
+  --color-pink-main: #ef63b7;
+  --color-pink-soft: #f3b5e0;
+
+  --color-white-soft: #fbf3ff;
+  --color-text-main: #2f1f49;
+  --color-text-soft: #6f5a91;
+  --color-border-light: #c696d8;
+  --color-shadow-soft: rgba(28, 16, 48, 0.28);
+  --color-glow-highlight: #ffb8eb;
+
+  --gradient-sunset: linear-gradient(
+    135deg,
+    #3c285c 0%,
+    #7554a0 32%,
+    #b38bd3 60%,
+    #ef63b7 84%,
+    #f3b5e0 100%
+  );
+
+  --gradient-sky: linear-gradient(
+    180deg,
+    #241536 0%,
+    #5a3f86 45%,
+    #d88fda 100%
+  );
+
+  --gradient-lavender: linear-gradient(
+    90deg,
+    #5a3f86 0%,
+    #a06bc4 50%,
+    #ef63b7 100%
+  );
+
+  --glow-pink-soft: 0 0 12px rgba(239, 99, 183, 0.35);
+  --glow-pink-medium: 0 0 20px rgba(239, 99, 183, 0.5);
+  --glow-lavender-soft: 0 0 14px rgba(117, 84, 160, 0.28);
+  --glow-blue-soft: 0 0 18px rgba(141, 132, 199, 0.32);
+}

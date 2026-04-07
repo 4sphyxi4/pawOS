@@ -1,0 +1,20 @@
+.desktop-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-workspace {
+  flex: 1;
+  position: relative;
+  padding: 2rem;
+
+  background-image: url("../../assets/wallpapers/desktop-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.desktop-inner {
+  height: 100%;
+}
