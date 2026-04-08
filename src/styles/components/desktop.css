@@ -2,6 +2,9 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+
+  border: 3px solid var(--color-purple-soft);
 }
 
 .desktop-workspace {

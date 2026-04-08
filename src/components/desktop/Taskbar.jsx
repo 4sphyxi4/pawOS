@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 
+import pawGif from '../../assets/icons/paw-icon.gif';
+import '../../styles/components/taskbar.css';
 
 function Taskbar() {
   return (
@@ -8,9 +10,9 @@ function Taskbar() {
       <div className="taskbar-left">
         <button type="button" className="pawos-btn">
           <img
-            src="/assets/icons/paw-icon.gif"
+            src={pawGif}
             alt="pawOS Start Menu"
-            className="pawos-logo"
+            className="pawos-icon"
           />
         </button>
       </div>

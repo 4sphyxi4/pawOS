@@ -7,7 +7,7 @@
 
   padding: 0 1rem;
   background: rgba(58, 39, 86, 0.9);
-  border-top: 4px solid var(--color-purple-soft);
+  border-top: 3px solid var(--color-purple-soft);
   box-shadow: 0 -4px 12px rgba(28, 16, 48, 0.18);
 }
 
@@ -36,6 +36,13 @@
   padding: 0.6rem 1rem;
   cursor: pointer;
   box-shadow: var(--glow-lavender-soft);
+}
+
+.pawos-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  pointer-events: none;
 }
 
 /* Taskbar center - open apps */
