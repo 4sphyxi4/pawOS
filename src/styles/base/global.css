@@ -29,7 +29,7 @@ a {
   text-decoration: none;
   color: inherit;
 } /* border-bottom: 5px solid rgb(50, 50, 50); */
-  /* box-shadow: 0px 1px 6px 0px rgb(158, 129, 254); */
+/* box-shadow: 0px 1px 6px 0px rgb(158, 129, 254); */
 
 .ui-bar {
   padding: 0.85rem 1.5rem;
@@ -42,8 +42,17 @@ a {
   border-bottom: 2px solid var(--color-border-dark);
 
   box-shadow:
-   inset -1px -1px 0 var(--color-surface-shadow),
+    inset -1px -1px 0 var(--color-surface-shadow),
     inset 1px 1px 0 var(--color-surface-soft);
+}
+
+.ui-bar-inset {
+  background: rgba(var(--color-purple-main-rgb), 0.15);
+
+  border-top: 2px solid var(--color-border-dark);
+  border-left: 2px solid var(--color-border-dark);
+  border-right: 2px solid var(--color-white-soft);
+  border-bottom: 2px solid var(--color-white-soft);
 }
 
 .btn-primary {
@@ -51,6 +60,14 @@ a {
   cursor: pointer;
 
   background: rgba(var(--color-purple-main-rgb), 0.25);
+  backdrop-filter: blur(10px);
 
-  color: var(--color-white-soft);
+  border-top: 2px solid var(--color-surface-soft);
+  border-left: 2px solid var(--color-surface-soft);
+  border-right: 2px solid var(--color-border-dark);
+  border-bottom: 2px solid var(--color-border-dark);
+
+  box-shadow:
+    inset -1px -1px 0 var(--color-surface-shadow),
+    inset 1px 1px 0 var(--color-surface-soft);
 }

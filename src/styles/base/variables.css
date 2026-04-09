@@ -18,7 +18,7 @@
   --color-text-soft: #6e5fa3;
 
   /* Borders & dark UI accents */
-   --color-border-dark: #3c2d5c;
+  --color-border-dark: #3c2d5c;
   --color-border-mid: #7e63a8;
   --color-border-light: #fbe7ff;
   --color-surface-main: #e9c7f0;
@@ -27,7 +27,6 @@
 
   /* Shadows */
   --color-shadow-soft: rgba(30, 20, 60, 0.35);
-
 
   /* =========================
      RGB VERSIONS (FOR RGBA)
@@ -45,7 +44,6 @@
 
   --color-border-dark-rgb: 50, 50, 50;
   --color-border-light-rgb: 201, 166, 255;
-
 
   /* =========================
      GRADIENTS
@@ -74,7 +72,6 @@
     #a78be6 50%,
     #f07ac3 100%
   );
-
 
   /* =========================
      GLOWS
