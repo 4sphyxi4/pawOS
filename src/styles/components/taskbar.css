@@ -1,14 +1,17 @@
 .taskbar {
-  height: 4rem;
+  height: 3.7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
-  padding: 0 1rem;
-  background: rgba(58, 39, 86, 0.9);
-  border-top: 3px solid var(--color-purple-soft);
-  box-shadow: 0 -4px 12px rgba(28, 16, 48, 0.18);
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 92%;
+  max-width: 1440px;
 }
 
 .taskbar-left,
@@ -30,17 +33,14 @@
 /* Taskbar left - start menu */
 
 .pawos-btn {
-  border: 1px solid var(--color-border-light);
-  background: transparent;
-  color: var(--color-white-soft);
-  padding: 0.6rem 1rem;
-  cursor: pointer;
-  box-shadow: var(--glow-lavender-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pawos-icon {
-  width: 28px;
-  height: 28px;
+  width: 1.2rem;
+  height: 1.2rem;
   object-fit: contain;
   pointer-events: none;
 }
@@ -48,13 +48,15 @@
 /* Taskbar center - open apps */
 
 .taskbar-placeholder {
-  color: var(--color-pink-soft);
-  font-size: 0.95rem;
+  color: var(--color-white-soft);
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
 }
 
 .window-strip {
-  border: 1px solid var(--color-border-light);
-  padding: 0.4rem 0.8rem;
+  border: 2px solid rgb(var(--color-border-dark-rgb));
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.3rem 0.7rem;
 }
 
 /* Taskbar right - system tray */
@@ -66,8 +68,9 @@
 }
 
 .system-tray span {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--color-white-soft);
+  letter-spacing: 0.1rem;
 }
 
 .volume-icon {

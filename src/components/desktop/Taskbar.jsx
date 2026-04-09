@@ -6,14 +6,10 @@ import '../../styles/components/taskbar.css';
 
 function Taskbar() {
   return (
-    <footer className="taskbar">
+    <footer className="taskbar ui-bar">
       <div className="taskbar-left">
-        <button type="button" className="pawos-btn">
-          <img
-            src={pawGif}
-            alt="pawOS Start Menu"
-            className="pawos-icon"
-          />
+        <button type="button" className="btn-primary pawos-btn">
+         BTN
         </button>
       </div>
 
