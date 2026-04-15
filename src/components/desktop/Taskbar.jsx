@@ -1,10 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import StartMenu from "./StartMenu";
 
 import "../../styles/components/taskbar.css";
 
 function Taskbar() {
+  const [showStartMenu, setShowStartMenu] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -30,9 +32,10 @@ function Taskbar() {
   return (
     <footer className="taskbar ui-bar">
       <div className="taskbar-left">
-        <button type="button" className="btn-primary pawos-btn">
-          BTN
+        <button type="button" onClick={() => setShowStartMenu(!showStartMenu)} className="btn-primary menu-btn">
+          <span>&nbsp;</span>
         </button>
+        {showStartMenu && <StartMenu />}
       </div>
 
       <div className="taskbar-center">

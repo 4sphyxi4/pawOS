@@ -12,7 +12,7 @@ select {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Press Start 2P";
   color: var(--color-text-main);
   background: var(--gradient-sky);
   background-repeat: no-repeat;
@@ -28,13 +28,12 @@ body,
 a {
   text-decoration: none;
   color: inherit;
-} /* border-bottom: 5px solid rgb(50, 50, 50); */
-/* box-shadow: 0px 1px 6px 0px rgb(158, 129, 254); */
+} 
 
 .ui-bar {
   padding: 0.85rem 1.5rem;
   background: rgba(var(--color-purple-main-rgb), 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
 
   border-top: 2px solid var(--color-surface-soft);
   border-left: 2px solid var(--color-surface-soft);
@@ -47,7 +46,7 @@ a {
 }
 
 .ui-bar-inset {
-  background: rgba(var(--color-purple-main-rgb), 0.15);
+  /* background: rgba(var(--color-purple-main-rgb), 0.15); */
 
   border-top: 2px solid var(--color-border-dark);
   border-left: 2px solid var(--color-border-dark);
@@ -56,11 +55,10 @@ a {
 }
 
 .btn-primary {
-  padding: 0.3rem 0.5rem;
   cursor: pointer;
 
   background: rgba(var(--color-purple-main-rgb), 0.25);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(5px);
 
   border-top: 2px solid var(--color-surface-soft);
   border-left: 2px solid var(--color-surface-soft);

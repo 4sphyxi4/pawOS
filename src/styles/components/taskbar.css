@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.taskbar-left {
+  gap: 0.75rem;
+  position: relative;
+}
+
 .taskbar-center {
   flex: 1;
   justify-content: center;
@@ -30,33 +35,58 @@
   gap: 0.75rem;
 }
 
-/* Taskbar left - start menu */
+/* =========================
+   TASKBAR ELEMENTS
+========================= */
 
-.pawos-btn {
+/* Taskbar left */
+
+.menu-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.45rem 2rem;
+  transform: translateX(-15%);
 }
 
-.pawos-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  object-fit: contain;
-  pointer-events: none;
+/* =========================
+   START MENU
+========================= */  
+
+.start-menu {
+  color: var(--color-white-soft);
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+
+  width: 25rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.start-menu-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+
+  font-size: 0.8rem;
+  list-style: none;
 }
 
 /* Taskbar center - open apps */
 
 .taskbar-placeholder {
   color: var(--color-white-soft);
-  font-size: 1rem;
+  font-size: 0.7rem;
   letter-spacing: 0.1rem;
 }
 
 .window-strip {
   border: 2px solid rgb(var(--color-border-dark-rgb));
   background: rgba(255, 255, 255, 0.05);
-  padding: 0.3rem 0.7rem;
+  padding: 0.4rem 0.7rem;
 }
 
 /* Taskbar right - system tray */
@@ -68,11 +98,16 @@
 }
 
 .system-tray span {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: var(--color-white-soft);
-  letter-spacing: 0.1rem;
 }
 
 .volume-icon {
   color: var(--color-pink-soft);
 }
+
+
+
+/* =========================
+   MEDIA QUERIES
+========================= */
