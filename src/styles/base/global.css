@@ -32,7 +32,7 @@ a {
 
 .ui-bar {
   padding: 0.85rem 1.5rem;
-  background: rgba(var(--color-purple-main-rgb), 0.25);
+  background: rgba(var(--color-purple-main-rgb), 0.45);
   backdrop-filter: blur(5px);
 
   border-top: 2px solid var(--color-surface-soft);
@@ -46,8 +46,6 @@ a {
 }
 
 .ui-bar-inset {
-  /* background: rgba(var(--color-purple-main-rgb), 0.15); */
-
   border-top: 2px solid var(--color-border-dark);
   border-left: 2px solid var(--color-border-dark);
   border-right: 2px solid var(--color-white-soft);
