@@ -16,7 +16,7 @@ function StartMenu({ position, menuRef }) {
         <li className="start-menu-item">Other Projects</li>
       </ul>
     </div>,
-    document.body
+    document.body,
   );
 }
 

@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 
 import "../../styles/components/taskbar.css";
 
-function Taskbar() {
-  
+function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
   /* State abd effect for time and date*/
 
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -32,8 +31,6 @@ function Taskbar() {
 
   return (
     <>
-    
-
       <footer className="taskbar ui-bar">
         <div className="taskbar-left">
           <button

@@ -5,15 +5,13 @@ import StartMenu from "./StartMenu";
 import "../../styles/components/desktop.css";
 
 function Desktop() {
+  const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
+  const [menuPosition, setMenuPosition] = useState(null);
 
-const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
-const [menuPosition, setMenuPosition] = useState(null);
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
 
-
-const buttonRef = useRef(null);
-const menuRef = useRef(null);
-
-const updateMenuPosition = () => {
+  const updateMenuPosition = () => {
     if (!buttonRef.current) return;
 
     const rect = buttonRef.current.getBoundingClientRect();
@@ -33,9 +31,6 @@ const updateMenuPosition = () => {
     }
   };
 
-
-
-  
   useEffect(() => {
     if (!isStartMenuOpen) return;
 
@@ -75,7 +70,6 @@ const updateMenuPosition = () => {
     };
   }, [isStartMenuOpen]);
 
-
   return (
     <div className="desktop-page">
       <div className="desktop-workspace">
@@ -84,7 +78,11 @@ const updateMenuPosition = () => {
       {isStartMenuOpen && menuPosition && (
         <StartMenu position={menuPosition} menuRef={menuRef} />
       )}
-      <Taskbar ref={buttonRef} onClick={toggleStartMenu} aria-expanded={isStartMenuOpen} />
+      <Taskbar
+        buttonRef={buttonRef}
+        toggleStartMenu={toggleStartMenu}
+        isStartMenuOpen={isStartMenuOpen}
+      />
     </div>
   );
 }
