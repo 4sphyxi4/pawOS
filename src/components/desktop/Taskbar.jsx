@@ -1,84 +1,22 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useRef, useState } from "react";
-import StartMenu from "./StartMenu";
+import { useState, useEffect } from "react";
 
 import "../../styles/components/taskbar.css";
 
 function Taskbar() {
-  const [showStartMenu, setShowStartMenu] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
-  const [menuPosition, setMenuPosition] = useState(null);
+  
+  /* State abd effect for time and date*/
 
-  const buttonRef = useRef(null);
-  const menuRef = useRef(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const intervalId = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    return () => clearInterval(timer);
+    return () => clearInterval(intervalId);
   }, []);
-
-  const updateMenuPosition = () => {
-    if (!buttonRef.current) return;
-
-    const rect = buttonRef.current.getBoundingClientRect();
-
-    setMenuPosition({
-      left: rect.left - 13,
-      bottom: window.innerHeight - rect.top + 20,
-    });
-  };
-
-  const toggleStartMenu = () => {
-    if (!showStartMenu) {
-      updateMenuPosition();
-      setShowStartMenu(true);
-    } else {
-      setShowStartMenu(false);
-    }
-  };
-
-  useEffect(() => {
-    if (!showStartMenu) return;
-
-    const handleClickOutside = (event) => {
-      const clickedButton = buttonRef.current?.contains(event.target);
-      const clickedMenu = menuRef.current?.contains(event.target);
-
-      if (!clickedButton && !clickedMenu) {
-        setShowStartMenu(false);
-      }
-    };
-
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        setShowStartMenu(false);
-      }
-    };
-
-    const handleResize = () => {
-      updateMenuPosition();
-    };
-
-    const handleScroll = () => {
-      updateMenuPosition();
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [showStartMenu]);
 
   const formattedTime = currentTime.toLocaleTimeString([], {
     hour: "2-digit",
@@ -94,9 +32,7 @@ function Taskbar() {
 
   return (
     <>
-      {showStartMenu && menuPosition && (
-        <StartMenu position={menuPosition} menuRef={menuRef} />
-      )}
+    
 
       <footer className="taskbar ui-bar">
         <div className="taskbar-left">
@@ -105,7 +41,7 @@ function Taskbar() {
             type="button"
             onClick={toggleStartMenu}
             className="btn-primary menu-btn"
-            aria-expanded={showStartMenu}
+            aria-expanded={isStartMenuOpen}
             aria-haspopup="true"
             aria-label="Open start menu"
           >
