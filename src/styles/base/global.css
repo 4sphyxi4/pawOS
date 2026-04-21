@@ -31,7 +31,6 @@ a {
 }
 
 .ui-box {
-  padding: 0.85rem 1.5rem;
   background: rgba(var(--color-purple-main-rgb), 0.45);
   backdrop-filter: blur(5px);
 

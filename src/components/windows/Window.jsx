@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
+import { faXmark, faWindowMinimize } from "@fortawesome/free-solid-svg-icons";
+import { faSquare } from "@fortawesome/free-regular-svg-icons";
 
 import "../../styles/windows/window.css";
 
@@ -13,26 +14,23 @@ function Window({ title, onClose, children }) {
             className="window-btn minimize-btn primary-btn"
             aria-label="Minimize window"
           >
-            <span>
-              <FontAwesomeIcon icon={faVolumeHigh} className="volume-icon" />
-            </span>
+            <FontAwesomeIcon
+              icon={faWindowMinimize}
+              className="controls-icon"
+            />
           </button>
           <button
             className="window-btn maximize-btn primary-btn"
             aria-label="Maximize window"
           >
-            <span>
-              <FontAwesomeIcon icon={faVolumeHigh} className="volume-icon" />
-            </span>
+            <FontAwesomeIcon icon={faSquare} className="controls-icon" />
           </button>
           <button
             className="window-btn close-btn primary-btn"
             onClick={onClose}
             aria-label="Close window"
           >
-            <span>
-              <FontAwesomeIcon icon={faVolumeHigh} className="volume-icon" />
-            </span>
+            <FontAwesomeIcon icon={faXmark} className="controls-icon" />
           </button>
         </div>
       </div>

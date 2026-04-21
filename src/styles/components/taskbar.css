@@ -12,6 +12,7 @@
 
   width: 92%;
   max-width: 1440px;
+  padding: 0.85rem 1.5rem;
 }
 
 .taskbar-left,
@@ -51,12 +52,13 @@
 
 /* =========================
    START MENU
-========================= */  
+========================= */
 
 .start-menu {
   position: fixed;
   width: 25rem;
   z-index: 1000;
+  padding: 1rem;
 
   display: flex;
   flex-direction: column;
@@ -82,7 +84,9 @@
 
 .start-menu-item {
   cursor: pointer;
-  transition: transform 120ms ease, opacity 120ms ease;
+  transition:
+    transform 120ms ease,
+    opacity 120ms ease;
 }
 
 .start-menu-item:hover {
@@ -132,8 +136,6 @@
 .volume-icon {
   color: var(--color-pink-soft);
 }
-
-
 
 /* =========================
    MEDIA QUERIES
