@@ -4,11 +4,22 @@
   padding: 0;
 }
 
+:root {
+  --cursor-default: url("/assets/cursors/default-dark.png") 4 1, default;
+  --cursor-pointer: url("/assets/cursors/pointer-dark.png") 4 1, pointer;
+}
+
 button,
 input,
 textarea,
 select {
   font: inherit;
+}
+
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
@@ -17,12 +28,20 @@ body {
   background: var(--gradient-sky);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  cursor: var(--cursor-default);
 }
 
-html,
-body,
-#root {
-  height: 100%;
+a,
+button,
+.primary-btn,
+[role="button"] {
+  cursor: var(--cursor-pointer);
+}
+
+input,
+textarea,
+select {
+  cursor: var(--cursor-default);
 }
 
 a {
