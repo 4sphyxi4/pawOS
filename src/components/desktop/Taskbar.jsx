@@ -35,7 +35,7 @@ function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
             ref={buttonRef}
             type="button"
             onClick={toggleStartMenu}
-            className="primary-brn menu-btn"
+            className="primary-btn menu-btn"
             aria-expanded={isStartMenuOpen}
             aria-haspopup="true"
             aria-label="Open start menu"

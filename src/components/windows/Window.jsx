@@ -10,7 +10,7 @@ function Window({ title, onClose, children }) {
         <div className="window-title">{title}</div>
         <div className="window-controls">
           <button
-            className="window-btn minimize-btn primary-brn"
+            className="window-btn minimize-btn primary-btn"
             aria-label="Minimize window"
           >
             <span>
@@ -18,7 +18,7 @@ function Window({ title, onClose, children }) {
             </span>
           </button>
           <button
-            className="window-btn maximize-btn primary-brn"
+            className="window-btn maximize-btn primary-btn"
             aria-label="Maximize window"
           >
             <span>
@@ -26,7 +26,7 @@ function Window({ title, onClose, children }) {
             </span>
           </button>
           <button
-            className="window-btn close-btn primary-brn"
+            className="window-btn close-btn primary-btn"
             onClick={onClose}
             aria-label="Close window"
           >

@@ -52,7 +52,7 @@ a {
   border-bottom: 2px solid var(--color-white-soft);
 }
 
-.primary-brn {
+.primary-btn {
   cursor: pointer;
 
   background: rgba(var(--color-purple-main-rgb), 0.25);
