@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 import "../../styles/components/taskbar.css";
 
 function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
-  /* State abd effect for time and date*/
-
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -31,13 +29,13 @@ function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
 
   return (
     <>
-      <footer className="taskbar ui-bar">
+      <footer className="taskbar ui-box">
         <div className="taskbar-left">
           <button
             ref={buttonRef}
             type="button"
             onClick={toggleStartMenu}
-            className="btn-primary menu-btn"
+            className="primary-brn menu-btn"
             aria-expanded={isStartMenuOpen}
             aria-haspopup="true"
             aria-label="Open start menu"
@@ -47,7 +45,7 @@ function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
         </div>
 
         <div className="taskbar-center">
-          <div className="ui-bar-inset window-strip">
+          <div className="ui-box-inset window-strip">
             <span className="taskbar-placeholder">No windows open</span>
           </div>
         </div>

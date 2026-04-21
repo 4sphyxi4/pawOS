@@ -1,15 +1,34 @@
 import { useEffect, useRef, useState } from "react";
 import Taskbar from "./Taskbar";
 import StartMenu from "./StartMenu";
+import Window from "../windows/Window";
 
 import "../../styles/components/desktop.css";
 
 function Desktop() {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState(null);
+  const [isWindowOpen, setIsWindowOpen] = useState(true);
 
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
+
+  const closeWindow = () => {
+    setIsWindowOpen(false);
+  };
+
+  const openWindow = () => {
+    setIsWindowOpen(true);
+  };
+
+  const closeStartMenu = () => {
+    setIsStartMenuOpen(false);
+  };
+
+  const openAnimalCatalogue = () => {
+    openWindow();
+    closeStartMenu();
+  };
 
   const updateMenuPosition = () => {
     if (!buttonRef.current) return;
@@ -27,7 +46,7 @@ function Desktop() {
       updateMenuPosition();
       setIsStartMenuOpen(true);
     } else {
-      setIsStartMenuOpen(false);
+      closeStartMenu();
     }
   };
 
@@ -39,13 +58,13 @@ function Desktop() {
       const clickedMenu = menuRef.current?.contains(event.target);
 
       if (!clickedButton && !clickedMenu) {
-        setIsStartMenuOpen(false);
+        closeStartMenu();
       }
     };
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        setIsStartMenuOpen(false);
+        closeStartMenu();
       }
     };
 
@@ -74,9 +93,18 @@ function Desktop() {
     <div className="desktop-page">
       <div className="desktop-workspace">
         <div className="desktop-inner"></div>
+        {isWindowOpen && (
+          <Window title="animal_catalogue.exe" onClose={closeWindow}>
+            <p>Content goes here...</p>
+          </Window>
+        )}
       </div>
       {isStartMenuOpen && menuPosition && (
-        <StartMenu position={menuPosition} menuRef={menuRef} />
+        <StartMenu
+          position={menuPosition}
+          menuRef={menuRef}
+          openAnimalCatalogue={openAnimalCatalogue}
+        />
       )}
       <Taskbar
         buttonRef={buttonRef}

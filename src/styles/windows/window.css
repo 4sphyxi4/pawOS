@@ -1,0 +1,36 @@
+.window {
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  width: 70rem;
+  height: 40rem;
+  padding: 0.6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.window-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.window-title {
+}
+
+.window-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.window-btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.3rem;
+}
+
+.window-content {
+  padding: 1rem;
+}

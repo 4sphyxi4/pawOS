@@ -30,7 +30,7 @@ a {
   color: inherit;
 }
 
-.ui-bar {
+.ui-box {
   padding: 0.85rem 1.5rem;
   background: rgba(var(--color-purple-main-rgb), 0.45);
   backdrop-filter: blur(5px);
@@ -45,14 +45,14 @@ a {
     inset 1px 1px 0 var(--color-surface-soft);
 }
 
-.ui-bar-inset {
+.ui-box-inset {
   border-top: 2px solid var(--color-border-dark);
   border-left: 2px solid var(--color-border-dark);
   border-right: 2px solid var(--color-white-soft);
   border-bottom: 2px solid var(--color-white-soft);
 }
 
-.btn-primary {
+.primary-brn {
   cursor: pointer;
 
   background: rgba(var(--color-purple-main-rgb), 0.25);
