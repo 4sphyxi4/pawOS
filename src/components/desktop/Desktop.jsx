@@ -8,11 +8,13 @@ import "../../styles/components/desktop.css";
 function Desktop() {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState(null);
-  const [isWindowOpen, setIsWindowOpen] = useState(true);
 
   const [windows, setWindows] = useState([]);
 
-  const openWindows = (id, title) => {
+  const buttonRef = useRef(null);
+  const menuRef = useRef(null);
+
+  const openWindow = (id, title) => {
     setWindows((prevWindows) => {
       return [
         ...prevWindows,
@@ -21,24 +23,8 @@ function Desktop() {
     });
   };
 
-  const buttonRef = useRef(null);
-  const menuRef = useRef(null);
-
-  const closeWindow = () => {
-    setIsWindowOpen(false);
-  };
-
-  const openWindow = () => {
-    setIsWindowOpen(true);
-  };
-
   const closeStartMenu = () => {
     setIsStartMenuOpen(false);
-  };
-
-  const openAnimalCatalogue = () => {
-    openWindow();
-    closeStartMenu();
   };
 
   const updateMenuPosition = () => {
@@ -104,11 +90,17 @@ function Desktop() {
     <div className="desktop-page">
       <div className="desktop-workspace">
         <div className="desktop-inner"></div>
-        {isWindowOpen && (
-          <Window title="animal_catalogue.exe" onClose={closeWindow}>
+        {windows.map((windowItem) => (
+          <Window
+            key={windowItem.id}
+            title={windowItem.title}
+            onClose={() => {
+              console.log("close", windowItem.id);
+            }}
+          >
             <p>Content goes here...</p>
           </Window>
-        )}
+        ))}
       </div>
       {isStartMenuOpen && menuPosition && (
         <StartMenu
