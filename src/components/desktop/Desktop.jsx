@@ -8,7 +8,6 @@ import "../../styles/components/desktop.css";
 function Desktop() {
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState(null);
-
   const [windows, setWindows] = useState([]);
 
   const buttonRef = useRef(null);
@@ -16,17 +15,42 @@ function Desktop() {
 
   const openWindow = (id, title) => {
     setWindows((prevWindows) => {
+      const windowExists = prevWindows.some(
+        (windowItem) => windowItem.id === id,
+      );
+      if (windowExists) {
+        return prevWindows;
+      }
       return [
-        ...prevWindows,
+        ...prevWindows.map((windowItem) => ({
+          ...windowItem,
+          isFocused: false,
+        })),
         { id, title, isMinimized: false, isFocused: true },
       ];
+    });
+  };
+  const closeWindow = (id) => {
+    setWindows((prevWindows) => {
+      return prevWindows.filter((windowItem) => windowItem.id !== id);
+    });
+  };
+  const focusWindow = (id) => {
+    setWindows((prevWindows) => {
+      return prevWindows.map((windowItem) => ({
+        ...windowItem,
+        isFocused: windowItem.id === id,
+      }));
     });
   };
 
   const closeStartMenu = () => {
     setIsStartMenuOpen(false);
   };
-
+  const openAnimalCatalogue = () => {
+    openWindow("animal-catalogue", "animal_catalogue.exe");
+    closeStartMenu();
+  };
   const updateMenuPosition = () => {
     if (!buttonRef.current) return;
 
@@ -37,7 +61,6 @@ function Desktop() {
       bottom: window.innerHeight - rect.top + 20,
     });
   };
-
   const toggleStartMenu = () => {
     if (!isStartMenuOpen) {
       updateMenuPosition();
@@ -94,8 +117,12 @@ function Desktop() {
           <Window
             key={windowItem.id}
             title={windowItem.title}
+            isFocused={windowItem.isFocused}
             onClose={() => {
-              console.log("close", windowItem.id);
+              closeWindow(windowItem.id);
+            }}
+            onFocus={() => {
+              focusWindow(windowItem.id);
             }}
           >
             <p>Content goes here...</p>

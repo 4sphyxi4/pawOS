@@ -4,9 +4,12 @@ import { faSquare } from "@fortawesome/free-regular-svg-icons";
 
 import "../../styles/windows/window.css";
 
-function Window({ title, onClose, children }) {
+function Window({ title, onClose, onFocus, isFocused, children }) {
   return (
-    <div className="ui-box window">
+    <div
+      className={`window ui-box ${isFocused ? "window-focused" : "window-blurred"}`}
+      onMouseDown={onFocus}
+    >
       <div className="window-header ui-box">
         <div className="window-title">{title}</div>
         <div className="window-controls">
