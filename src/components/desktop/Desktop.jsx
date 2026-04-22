@@ -43,6 +43,14 @@ function Desktop() {
       }));
     });
   };
+  const unfocusAllWindows = () => {
+    setWindows((prevWindows) => {
+      return prevWindows.map((windowItem) => ({
+        ...windowItem,
+        isFocused: false,
+      }));
+    });
+  };
 
   const closeStartMenu = () => {
     setIsStartMenuOpen(false);
@@ -111,19 +119,15 @@ function Desktop() {
 
   return (
     <div className="desktop-page">
-      <div className="desktop-workspace">
+      <div className="desktop-workspace" onMouseDown={unfocusAllWindows}>
         <div className="desktop-inner"></div>
         {windows.map((windowItem) => (
           <Window
             key={windowItem.id}
             title={windowItem.title}
             isFocused={windowItem.isFocused}
-            onClose={() => {
-              closeWindow(windowItem.id);
-            }}
-            onFocus={() => {
-              focusWindow(windowItem.id);
-            }}
+            onClose={() => closeWindow(windowItem.id)}
+            onFocus={() => focusWindow(windowItem.id)}
           >
             <p>Content goes here...</p>
           </Window>

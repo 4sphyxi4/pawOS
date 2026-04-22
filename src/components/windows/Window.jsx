@@ -7,9 +7,13 @@ import "../../styles/windows/window.css";
 function Window({ title, onClose, onFocus, isFocused, children }) {
   return (
     <div
-      className={`window ui-box ${isFocused ? "window-focused" : "window-blurred"}`}
-      onMouseDown={onFocus}
+      className={`window ui-box ${isFocused ? "window-focused" : "window-unfocused"}`}
+      onMouseDown={(event) => {
+        event.stopPropagation();
+        onFocus();
+      }}
     >
+      <div className="window-cat" aria-hidden="true"></div>
       <div className="window-header ui-box">
         <div className="window-title">{title}</div>
         <div className="window-controls">

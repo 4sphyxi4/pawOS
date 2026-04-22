@@ -4,6 +4,7 @@
   left: 30%;
   width: 70rem;
   height: 40rem;
+  overflow: visible;
 
   display: flex;
   flex-direction: column;
@@ -14,11 +15,11 @@
 .window-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 0.5rem;
 }
 
 .window-title {
+  align-self: center;
 }
 
 .window-controls {
@@ -50,11 +51,41 @@
   overflow: auto;
 }
 
-.window-focused {
+/* .window-focused {
   opacity: 1;
   box-shadow: 0 0 14px var(--color-shadow-soft);
 }
 
 .window-blurred {
   opacity: 0.9;
+} */
+
+.window-cat {
+  position: absolute;
+  bottom: -3rem;
+  right: -3rem;
+
+  width: 18rem;
+  height: 12rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+
+  pointer-events: none;
+  z-index: 4;
+
+  filter: drop-shadow(0.7rem 0.35rem 0 rgba(70, 40, 110, 0.35));
+}
+
+.window-unfocused .window-cat {
+  background-image: url("/assets/sprites/cat-asleep-removebg-preview.png");
+  transform: translateY(-0.4rem);
+}
+
+.window-focused .window-cat {
+  background-image: url("/assets/sprites/cat-awake-removebg-preview.png");
 }
