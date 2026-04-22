@@ -5,8 +5,8 @@
 }
 
 :root {
-  --cursor-default: url("/assets/cursors/default-dark.png") 4 1, default;
-  --cursor-pointer: url("/assets/cursors/pointer-dark.png") 4 1, pointer;
+  --cursor-default: url("/assets/cursors/custom/default-24.png") 4 1, default;
+  --cursor-pointer: url("/assets/cursors/custom/pointer-32.png") 12 1, pointer;
 }
 
 button,
@@ -71,8 +71,6 @@ a {
 }
 
 .primary-btn {
-  cursor: pointer;
-
   background: rgba(var(--color-purple-main-rgb), 0.25);
   backdrop-filter: blur(5px);
 
