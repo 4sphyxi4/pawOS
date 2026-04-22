@@ -10,6 +10,17 @@ function Desktop() {
   const [menuPosition, setMenuPosition] = useState(null);
   const [isWindowOpen, setIsWindowOpen] = useState(true);
 
+  const [windows, setWindows] = useState([]);
+
+  const openWindows = (id, title) => {
+    setWindows((prevWindows) => {
+      return [
+        ...prevWindows,
+        { id, title, isMinimized: false, isFocused: true },
+      ];
+    });
+  };
+
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
 
