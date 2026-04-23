@@ -2,61 +2,24 @@ import { useEffect, useRef, useState } from "react";
 import Taskbar from "./Taskbar";
 import StartMenu from "./StartMenu";
 import Window from "../windows/Window";
+import useWindowManager from "../../hooks/useWindowManager";
 
 import "../../styles/components/desktop.css";
 
 function Desktop() {
+  const { windows, openWindow, closeWindow, focusWindow, unfocusAllWindows } =
+    useWindowManager();
   const [isStartMenuOpen, setIsStartMenuOpen] = useState(false);
   const [menuPosition, setMenuPosition] = useState(null);
-  const [windows, setWindows] = useState([]);
 
   const buttonRef = useRef(null);
   const menuRef = useRef(null);
 
-  const openWindow = (id, title) => {
-    setWindows((prevWindows) => {
-      const windowExists = prevWindows.some(
-        (windowItem) => windowItem.id === id,
-      );
-      if (windowExists) {
-        return prevWindows;
-      }
-      return [
-        ...prevWindows.map((windowItem) => ({
-          ...windowItem,
-          isFocused: false,
-        })),
-        { id, title, isMinimized: false, isFocused: true },
-      ];
-    });
-  };
-  const closeWindow = (id) => {
-    setWindows((prevWindows) => {
-      return prevWindows.filter((windowItem) => windowItem.id !== id);
-    });
-  };
-  const focusWindow = (id) => {
-    setWindows((prevWindows) => {
-      return prevWindows.map((windowItem) => ({
-        ...windowItem,
-        isFocused: windowItem.id === id,
-      }));
-    });
-  };
-  const unfocusAllWindows = () => {
-    setWindows((prevWindows) => {
-      return prevWindows.map((windowItem) => ({
-        ...windowItem,
-        isFocused: false,
-      }));
-    });
-  };
-
   const closeStartMenu = () => {
     setIsStartMenuOpen(false);
   };
-  const openAnimalCatalogue = () => {
-    openWindow("animal-catalogue", "animal_catalogue.exe");
+  const openAnimalDatabase = () => {
+    openWindow("animal-Database", "animal_Database.exe");
     closeStartMenu();
   };
   const updateMenuPosition = () => {
@@ -137,7 +100,7 @@ function Desktop() {
         <StartMenu
           position={menuPosition}
           menuRef={menuRef}
-          openAnimalCatalogue={openAnimalCatalogue}
+          openAnimalDatabase={openAnimalDatabase}
         />
       )}
       <Taskbar

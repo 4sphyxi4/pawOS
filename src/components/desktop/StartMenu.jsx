@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 
-function StartMenu({ position, menuRef, openAnimalCatalogue }) {
+function StartMenu({ position, menuRef, openAnimalDatabase }) {
   return createPortal(
     <div
       ref={menuRef}
@@ -12,9 +12,11 @@ function StartMenu({ position, menuRef, openAnimalCatalogue }) {
     >
       <ul className="start-menu-list">
         <li className="start-menu-item">
-          <button onClick={openAnimalCatalogue}>Animal Catalogue</button>
+          <button onClick={openAnimalDatabase}>Animal Database</button>
         </li>
         <li className="start-menu-item">Register Animal</li>
+        <li className="start-menu-item">Organizer</li>
+        <li className="start-menu-item">Other Projects</li>
         <li className="start-menu-item">Other Projects</li>
       </ul>
     </div>,

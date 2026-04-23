@@ -51,15 +51,6 @@
   overflow: auto;
 }
 
-/* .window-focused {
-  opacity: 1;
-  box-shadow: 0 0 14px var(--color-shadow-soft);
-}
-
-.window-blurred {
-  opacity: 0.9;
-} */
-
 .window-cat {
   position: absolute;
   bottom: -3rem;
