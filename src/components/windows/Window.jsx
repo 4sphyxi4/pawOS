@@ -13,7 +13,6 @@ function Window({ title, onClose, onFocus, isFocused, children }) {
         onFocus();
       }}
     >
-      <div className="window-cat" aria-hidden="true"></div>
       <div className="window-header ui-box">
         <div className="window-title">{title}</div>
         <div className="window-controls">

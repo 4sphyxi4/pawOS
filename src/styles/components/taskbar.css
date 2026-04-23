@@ -13,6 +13,7 @@
   width: 92%;
   max-width: 1440px;
   padding: 0.85rem 1.5rem;
+  overflow: visible;
 }
 
 .taskbar-left,
@@ -33,7 +34,13 @@
 }
 
 .taskbar-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   gap: 0.75rem;
+  min-width: 14rem;
+  overflow: visible;
 }
 
 /* =========================
@@ -46,127 +53,6 @@
   justify-content: center;
   padding: 0.45rem 2rem;
   transform: translateX(-15%);
-}
-
-/* =========================
-   START MENU
-========================= */
-
-.start-menu {
-  position: fixed;
-  width: 22rem;
-  z-index: 1000;
-  padding: 0.75rem;
-
-  display: flex;
-  flex-direction: column;
-
-  color: var(--color-white-soft);
-  background: rgba(var(--color-purple-main-rgb), 0.35);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  animation: startMenuOpen 180ms ease-out;
-}
-
-.start-menu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  list-style: none;
-}
-
-.start-menu-item {
-  position: relative;
-  width: 100%;
-}
-
-.start-menu-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0.9rem 1rem;
-  border: none;
-  background: transparent;
-  color: var(--color-white-soft);
-  font: inherit;
-  font-size: 0.78rem;
-  text-align: left;
-  cursor: pointer;
-
-  border-radius: 0.6rem;
-  transition:
-    transform 120ms ease,
-    background 120ms ease,
-    opacity 120ms ease;
-}
-
-.start-menu-button:hover {
-  transform: translateX(4px);
-  background: rgba(255, 255, 255, 0.08);
-  opacity: 1;
-}
-
-.start-menu-button--submenu {
-  padding-right: 0.8rem;
-}
-
-.submenu-arrow {
-  font-size: 0.7rem;
-  opacity: 0.8;
-}
-
-/* =========================
-   SUBMENU
-========================= */
-
-.start-menu-item--has-submenu {
-  position: relative;
-}
-
-.start-submenu {
-  position: absolute;
-  top: 0;
-  left: calc(100% + 0.6rem);
-  width: 15rem;
-  padding: 0.55rem;
-  z-index: 1100;
-
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-
-  background: rgba(var(--color-purple-main-rgb), 0.4);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-
-  animation: submenuOpen 140ms ease-out;
-}
-
-@keyframes startMenuOpen {
-  from {
-    opacity: 0;
-    transform: translateY(10px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes submenuOpen {
-  from {
-    opacity: 0;
-    transform: translateX(-6px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
 }
 
 /* Taskbar center - open apps */
@@ -198,4 +84,14 @@
 
 .volume-icon {
   color: var(--color-pink-soft);
+}
+
+/* Pet assistant */
+
+.taskbar-pet-anchor {
+  position: absolute;
+  right: -6rem;
+  bottom: calc(100% - 2.5rem);
+  z-index: 5;
+  pointer-events: none;
 }

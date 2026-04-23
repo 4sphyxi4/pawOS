@@ -1,5 +1,6 @@
 import { createPortal } from "react-dom";
 import { useState } from "react";
+import "../../styles/components/start-menu.css";
 
 function StartMenu({
   position,
