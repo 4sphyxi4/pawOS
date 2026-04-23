@@ -2,14 +2,29 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  pointer-events: none;
+}
+
+.pet-assistant-stage {
+  position: relative;
+  width: 14rem;
+  height: 14rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
 }
 
 .pet-assistant-image {
-  display: block;
-  width: 16rem;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 14rem;
   height: auto;
-  image-rendering: pixelated;
+  transform: translateX(-50%);
   user-select: none;
   -webkit-user-drag: none;
+  image-rendering: auto;
   filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.22));
+  will-change: transform;
 }
