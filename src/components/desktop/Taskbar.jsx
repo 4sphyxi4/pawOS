@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeHigh } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
-import PetAssistant from "../assistant/PetAssistant";
 
 import "../../styles/components/taskbar.css";
 
@@ -51,10 +50,6 @@ function Taskbar({ buttonRef, toggleStartMenu, isStartMenuOpen }) {
       </div>
 
       <div className="taskbar-right">
-        <div className="taskbar-pet-anchor">
-          <PetAssistant />
-        </div>
-
         <div className="system-tray">
           <FontAwesomeIcon icon={faVolumeHigh} className="volume-icon" />
           <span>{formattedTime}</span>
