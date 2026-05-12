@@ -1,172 +1,360 @@
-# Animal Adoption Centre
+# pawOS
 
-# What the project is
+pawOS is a dreamy pixel-style desktop interface built with React.  
+It presents an animal rescue/adoption management system as a fictional operating system, with a start menu, taskbar, draggable-style windows, and separate feature views such as Dashboard, Animal Centre, Organizer, Mood Log, PawMail, Milestones, and Projects.
 
-A themed animal rescue/adoption dashboard where a user can add animals, view them as cards, mark them as adopted, search/filter them, and save the data in the browser.
+The goal of this project is to combine practical React architecture with a highly personal visual style.
 
-This is a “practical management app.”
+---
 
-# What did I learn:
+## Project Concept
 
-- how to store structured data in arrays of objects
-- how to render that data into the DOM
-- how to listen for user interactions
-- how to update the UI after actions
-- how to save and restore data from localStorage
-- ow to break a problem into reusable functions
+pawOS is designed like a small custom operating system for managing animal rescue information.
 
-# What it demonstrates in a portfolio:
+Instead of using a traditional website layout, the user interacts with:
 
-- vanilla JS ability
-- DOM manipulation
-- CRUD operations
-- event handling
-- practical UI logic
-- local persistence
-- ability to make a project feel personal
+- a desktop environment
+- a start menu
+- floating windows
+- feature views inside those windows
+- shared animal data across different sections
 
-# Core skills covered:
+The main domain of the project is animal rescue/adoption, but the interface is intentionally styled like a soft retro computer system.
 
-- variables
-- functions
-- objects
-- arrays
-- conditionals
-- loops or array iteration
-- map, filter, find
-- event listeners
-- form handling
-- browser storage
-- rendering
-- state-like thinking without React
+---
 
-# Features:
+## Current Features
 
-- add animal
-- delete animal
-- mark as adopted
-- search by name
-- filter by species
-- save animals in localStorage
+- Pixel-inspired desktop UI
+- Custom wallpaper and visual theme
+- Start menu with grouped navigation
+- Taskbar with clock/status area
+- Window system for opening separate views
+- Reusable `Window` component
+- Feature-based project structure
+- Shared animal domain folder
+- Animal Centre views:
+  - Animal Catalogue
+  - Register Animal
+- Dashboard view
+- Organizer view
+- Mood Log view
+- PawMail view
+- Milestones view
+- Projects view
 
-- edit animal
-- favorite animal
-- featured animal section
-- adoption stats
-- personality field
-- rescue story field
-- empty state message
-- simple validation
+---
 
-- species badges
-- adoption counter
-- “recently added” sorting
-- theme toggle
-- responsive card layout
+## Project Structure
 
-# Example animal data structure
+```txt
+src/
+├─ assets/
+│  ├─ assistant/
+│  ├─ icons/
+│  └─ wallpapers/
+│
+├─ components/
+│  ├─ desktop/
+│  │  ├─ Desktop.jsx
+│  │  ├─ DesktopIcon.jsx
+│  │  ├─ StartMenu.jsx
+│  │  └─ Taskbar.jsx
+│  │
+│  ├─ ui/
+│  │  ├─ Button.jsx
+│  │  ├─ Modal.jsx
+│  │  └─ Panel.jsx
+│  │
+│  └─ windows/
+│     ├─ ErrorDialog.jsx
+│     └─ Window.jsx
+│
+├─ domain/
+│  └─ animals/
+│     ├─ animalConstants.js
+│     ├─ animalData.js
+│     └─ animalHelpers.js
+│
+├─ features/
+│  ├─ animal-centre/
+│  │  └─ views/
+│  │     ├─ AnimalCatalogueView.jsx
+│  │     └─ RegisterAnimalView.jsx
+│  │
+│  ├─ dashboard/
+│  │  └─ DashboardView.jsx
+│  │
+│  ├─ milestones/
+│  │  └─ MilestonesView.jsx
+│  │
+│  ├─ mood-log/
+│  │  └─ MoodLogView.jsx
+│  │
+│  ├─ organizer/
+│  │  └─ OrganizerView.jsx
+│  │
+│  ├─ pawmail/
+│  │  └─ PawMailView.jsx
+│  │
+│  └─ projects/
+│     └─ ProjectsView.jsx
+│
+├─ hooks/
+│  ├─ useLocalStorage.js
+│  └─ useWindowManager.js
+│
+├─ os/
+│  ├─ startMenuItems.js
+│  └─ windowDefinitions.jsx
+│
+├─ styles/
+│  ├─ components/
+│  ├─ global/
+│  └─ windows/
+│
+├─ utils/
+├─ App.jsx
+└─ Main.jsx
 
-const animal = { id: 1,
+```
+
+## Architecture
+
+The project is organized around a few main ideas.
+
+### Components
+
+The components folder contains reusable UI and operating-system-style interface pieces.
+
+Examples:
+
+Window
+StartMenu
+Taskbar
+Button
+Panel
+Modal
+
+These components are not tied to one specific feature. They can be reused across the project.
+
+### Features
+
+The features folder contains user-facing sections of the app.
+
+Examples:
+
+dashboard
+animal-centre
+pawmail
+organizer
+milestones
+
+Each feature contains views that are rendered inside pawOS windows.
+
+### Domain
+
+The domain folder contains shared data and logic related to the main subject of the app.
+
+For this project, the main domain is animals.
+
+Animal data, constants, and helper functions live in:
+
+src/domain/animals/
+
+This allows multiple features, such as Dashboard, Animal Centre, and Milestones, to use the same animal logic without depending on each other.
+
+### OS Config
+
+The os folder contains configuration for the fictional operating system.
+
+startMenuItems.js controls what appears in the start menu.
+windowDefinitions.jsx controls which views can open as windows.
+
+This separates navigation, window behavior, and feature content.
+
+### Start Menu Structure
+
+The start menu is data-driven.
+
+Some start menu items open windows directly, while others act as groups.
+
+Example:
+
+{
+type: "group",
+label: "Animal Centre",
+children: [
+{
+type: "window",
+label: "Animal Catalogue",
+windowId: "animalCatalogue",
+},
+{
+type: "window",
+label: "Register Animal",
+windowId: "registerAnimal",
+},
+],
+}
+
+This keeps the start menu flexible and avoids hard-coding every click handler manually.
+
+### Window System
+
+pawOS uses a custom window manager hook to control open windows.
+
+The window manager handles:
+
+opening windows
+closing windows
+focusing windows
+preventing duplicate windows
+tracking which window is active
+
+The reusable Window component provides the visual frame, while each feature view provides the content inside the window.
+
+Example:
+
+<Window title="animal_Catalogue.exe">
+  <AnimalCatalogueView />
+</Window>
+
+The window controls the OS-style behavior.
+The view controls the actual feature content.
+
+### Animal Data Model
+
+Animal data is shared through the animal domain folder.
+
+Example animal object:
+
+const animal = {
+id: "matcha",
 name: "Matcha",
-type: "Cat",
+species: "Cat",
 dateOfBirth: "2025-11-01",
 status: "available",
 liked: false,
 favorited: false,
-personality: "Curious", "Playful",
-about: "Born into a long line of Maine Coons",
-image: "Image of Matcha", <- an image file path
+personality: ["Curious", "Playful"],
+about: "Born into a long line of Maine Coons.",
+image: "/images/matcha.png",
 };
 
-# Logic:
+## Planned animal-related functionality includes:
 
-addAnimal()
-renderAnimals()
-deleteAnimal(id)
-toggleAdopted(id)
-toggleFavorite(id)
-searchAnimals(query)
-filterAnimals(type)
-saveAnimals()
-loadAnimals()
-updateStats()
+adding animals
+editing animals
+deleting animals
+marking animals as adopted
+filtering by species
+searching by name
+favoriting animals
+showing adoption statistics
+displaying recently added animals
+saving animal data locally
+Skills Practiced
 
-# Used:
+## This project is helping me practice:
 
-- HTML
-- CSS
-- JavaScript
-- browser localStorage
-- VS Code
-- browser DevTools
-- Git and GitHub
+React component structure
+custom hooks
+state management
+reusable UI components
+data-driven rendering
+feature-based architecture
+domain-based organization
+controlled forms
+conditional rendering
+array methods such as map, filter, and find
+localStorage
+CSS organization
+responsive layout
+project planning
+Git and GitHub workflow
+What This Project Demonstrates
 
-# Concepts I have practiced:
+## pawOS demonstrates that I can:
 
-- selecting elements
-- handling submit events
-- preventing default form submission
-- getting values from inputs
-- pushing new objects into arrays
-- updating object properties
-- re-rendering after changes
-- saving arrays as JSON in localStorage
-- parsing JSON back into data
+build a React project from scratch
+organize a growing frontend codebase
+separate UI, features, hooks, and shared logic
+create reusable components
+manage state with custom hooks
+think in terms of product features and data domains
+create a personal but practical portfolio project
+design and implement a cohesive visual style
+Tech Stack
+React
+JavaScript
+CSS
+Vite
+localStorage
+Git
+GitHub
+VS Code
+Browser DevTools
+Planned Features
+Stage 1 — Core OS Interface
+Start menu
+Taskbar
+Clock
+Window opening and closing
+Focused and unfocused window states
+Feature views inside windows
+Stage 2 — Animal Centre
+Register animal form
+Animal catalogue cards
+Animal status system
+Favorite animals
+Adoption state
+Empty states
+Form validation
+Local persistence
+Stage 3 — Dashboard and Shared Data
+Animal statistics
+Recently added animals
+Adoption progress
+Urgent cases
+Shared animal data across multiple features
+Stage 4 — Feature Expansion
+Organizer tasks
+Mood Log entries
+PawMail messages
+Milestones timeline
+Project showcase area
+Stage 5 — Future Backend
 
-# Plans for the APP
+## Possible future additions:
 
-# Stage 1
+Firebase or Supabase
+authentication
+user accounts
+shared animal database
+admin-only animal management
+adoption history
+profile pages
+Design Direction
 
-Features:
+## pawOS uses a soft retro desktop style inspired by:
 
-- add animal with form
-- display card
-- like animal
-- favorite animal
-- adopt animal
-- move adopted animals to Found Home
-- disable adopt/favorite after adoption
-- save everything in localStorage
+pixel art
+dreamy pastel interfaces
+old operating systems
+transparent glass panels
+lavender and pink color palettes
+cozy personal dashboards
 
-# Stage 2 — app polish
+The visual goal is to make the project feel personal and memorable while still being structured like a serious React application.
 
-Add:
+## Long-Term Vision
 
-- image preview
-- search
-- filter by species
-- stats
-- empty states
-- theme toggle
-- better confirm modal
+The long-term goal is to turn pawOS into a polished portfolio project that combines:
 
-# Stage 3 — real users
+practical animal rescue/adoption management features
+strong React architecture
+custom UI design
+playful operating-system-inspired interactions
 
-Move to React and Firebase/Supabase.
-
-Add:
-
-- login/signup
-- only logged-in users can adopt
-- adopted animals saved to user account
-- animals shared across all users
-- maybe admin role for adding animals
-
-# Stage 4 — advanced features
-
-Experiment with:
-
-- adoption history
-- user profile
-- comments
-- animal updates
-- “evolving theme” or progress/growth features
-
-# About the “evolving” idea
-
-For example, once an animal is adopted:
-
-- it can gain happiness points
-- its card can visually change
-- users can unlock badges
-- animal profile can “grow”
+The project is both a learning tool and a portfolio piece.
