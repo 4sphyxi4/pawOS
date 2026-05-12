@@ -344,7 +344,7 @@ image: "/images/matcha.png",
 
 ### Stage 5 — Future Backend
 
-### Possible future additions:
+#### Possible future additions:
 
 - Firebase or Supabase
 - authentication
