@@ -1,100 +1,117 @@
+// src/components/desktop/StartMenu.jsx
+
+import { useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { useState } from "react";
+
+import { startMenuItems } from "../../os/startMenuItems";
 import "../../styles/components/start-menu.css";
 
-function StartMenu({
-  position,
-  menuRef,
-  openDashboard,
-  openAnimalDatabase,
-  openRegisterAnimal,
-  openOrganizer,
-  openMoodTracker,
-  openPawMail,
-  openMilestones,
-  openOtherProjects,
-}) {
+function StartMenu({ position, menuRef, onOpenWindow }) {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const closeTimerRef = useRef(null);
 
-  return createPortal(
-    <div
-      ref={menuRef}
-      className="ui-box start-menu"
-      style={{
-        left: `${position.left}px`,
-        bottom: `${position.bottom}px`,
-      }}
-    >
-      <ul className="start-menu-list">
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openDashboard}>
-            Dashboard
-          </button>
-        </li>
+  const openSubmenu = (item, event) => {
+    window.clearTimeout(closeTimerRef.current);
 
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    setActiveSubmenu({
+      label: item.label,
+      children: item.children,
+      top: rect.top - 6,
+      left: rect.right + 16,
+    });
+  };
+
+  const closeSubmenuSoon = () => {
+    closeTimerRef.current = window.setTimeout(() => {
+      setActiveSubmenu(null);
+    }, 120);
+  };
+
+  const keepSubmenuOpen = () => {
+    window.clearTimeout(closeTimerRef.current);
+  };
+
+  const handleOpenWindow = (windowId) => {
+    setActiveSubmenu(null);
+    onOpenWindow(windowId);
+  };
+
+  const renderMenuItem = (item) => {
+    if (item.type === "group") {
+      return (
         <li
+          key={item.label}
           className="start-menu-item start-menu-item--has-submenu"
-          onMouseEnter={() => setActiveSubmenu("database")}
-          onMouseLeave={() => setActiveSubmenu(null)}
+          onMouseLeave={closeSubmenuSoon}
         >
           <button
             className="start-menu-button start-menu-button--submenu"
-            onClick={openAnimalDatabase}
+            onMouseEnter={(event) => openSubmenu(item, event)}
           >
-            <span>Database</span>
+            {item.label}
             <span className="submenu-arrow">▶</span>
           </button>
+        </li>
+      );
+    }
 
-          {activeSubmenu === "database" && (
-            <div className="start-submenu ui-box">
+    return (
+      <li key={item.windowId} className="start-menu-item">
+        <button
+          className="start-menu-button"
+          onClick={() => handleOpenWindow(item.windowId)}
+        >
+          {item.label}
+        </button>
+      </li>
+    );
+  };
+
+  return (
+    <>
+      {createPortal(
+        <nav
+          ref={menuRef}
+          className="start-menu"
+          style={{
+            left: `${position.left}px`,
+            bottom: `${position.bottom}px`,
+          }}
+        >
+          <ul className="start-menu-list">
+            {startMenuItems.map((item) => renderMenuItem(item))}
+          </ul>
+        </nav>,
+        document.body,
+      )}
+
+      {activeSubmenu &&
+        createPortal(
+          <div
+            className="start-submenu start-submenu--portal"
+            style={{
+              top: `${activeSubmenu.top}px`,
+              left: `${activeSubmenu.left}px`,
+            }}
+            onMouseEnter={keepSubmenuOpen}
+            onMouseLeave={closeSubmenuSoon}
+            onMouseDown={(event) => event.stopPropagation()}
+          >
+            {activeSubmenu.children.map((child) => (
               <button
+                key={child.windowId}
                 className="start-menu-button"
-                onClick={openAnimalDatabase}
+                onClick={() => handleOpenWindow(child.windowId)}
               >
-                View Database
+                {child.label}
               </button>
-              <button
-                className="start-menu-button"
-                onClick={openRegisterAnimal}
-              >
-                Register Animal
-              </button>
-            </div>
-          )}
-        </li>
-
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openOrganizer}>
-            Organizer
-          </button>
-        </li>
-
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openMoodTracker}>
-            Mood Tracker
-          </button>
-        </li>
-
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openPawMail}>
-            PawMail
-          </button>
-        </li>
-
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openMilestones}>
-            Milestones
-          </button>
-        </li>
-
-        <li className="start-menu-item">
-          <button className="start-menu-button" onClick={openOtherProjects}>
-            Other Projects
-          </button>
-        </li>
-      </ul>
-    </div>,
-    document.body,
+            ))}
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }
 

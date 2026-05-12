@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 
-import "./styles/base/variables.css";
-import "./styles/base/global.css";
+import "./styles/global/variables.css";
+import "./styles/global/global.css";
 
 import "./styles/components/taskbar.css";
 import "./styles/components/desktop.css";

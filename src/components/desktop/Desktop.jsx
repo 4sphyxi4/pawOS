@@ -18,8 +18,15 @@ function Desktop() {
   const closeStartMenu = () => {
     setIsStartMenuOpen(false);
   };
-  const openAnimalDatabase = () => {
-    openWindow("animal-Database", "animal_Database.exe");
+  const openWindowFromMenu = (windowId) => {
+    const windowDefinition = windowDefinitions[windowId];
+
+    if (!windowDefinition) {
+      console.warn(`No window definition found for: ${windowId}`);
+      return;
+    }
+
+    openWindow(windowDefinition);
     closeStartMenu();
   };
   const updateMenuPosition = () => {
@@ -84,23 +91,29 @@ function Desktop() {
     <div className="desktop-page">
       <div className="desktop-workspace" onMouseDown={unfocusAllWindows}>
         <div className="desktop-inner"></div>
-        {windows.map((windowItem) => (
-          <Window
-            key={windowItem.id}
-            title={windowItem.title}
-            isFocused={windowItem.isFocused}
-            onClose={() => closeWindow(windowItem.id)}
-            onFocus={() => focusWindow(windowItem.id)}
-          >
-            <p>Content goes here...</p>
-          </Window>
-        ))}
+        {windows.map((windowItem) => {
+          const WindowContent = windowItem.Component;
+
+          if (windowItem.isMinimized) return null;
+
+          return (
+            <Window
+              key={windowItem.id}
+              title={windowItem.title}
+              isFocused={windowItem.isFocused}
+              onClose={() => closeWindow(windowItem.id)}
+              onFocus={() => focusWindow(windowItem.id)}
+            >
+              <WindowContent />
+            </Window>
+          );
+        })}
       </div>
       {isStartMenuOpen && menuPosition && (
         <StartMenu
           position={menuPosition}
           menuRef={menuRef}
-          openAnimalDatabase={openAnimalDatabase}
+          onOpenWindow={openWindowFromMenu}
         />
       )}
       <Taskbar

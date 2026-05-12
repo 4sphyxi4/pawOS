@@ -85,10 +85,6 @@
 }
 
 .start-submenu {
-  position: absolute;
-  top: -0.35rem;
-  left: 100%;
-  margin-left: 1rem;
   width: 16rem;
   padding: 0.55rem;
   z-index: 1100;
@@ -97,11 +93,19 @@
   flex-direction: column;
   gap: 0.35rem;
 
-  background: rgba(var(--color-purple-main-rgb), 0.4);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(var(--color-purple-main-rgb), 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* box-shadow:
+    0 1rem 2.5rem rgba(30, 10, 60, 0.3),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08); */
 
   animation: submenuOpen 140ms ease-out;
+}
+
+.start-submenu--portal {
+  position: fixed;
 }
 
 .start-submenu .start-menu-button {
