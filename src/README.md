@@ -235,6 +235,7 @@ Animal data is shared through the animal domain folder.
 
 Example animal object:
 
+```txt
 const animal = {
 id: "matcha",
 name: "Matcha",
@@ -247,6 +248,7 @@ personality: ["Curious", "Playful"],
 about: "Born into a long line of Maine Coons.",
 image: "/images/matcha.png",
 };
+```
 
 ## Planned animal-related functionality includes:
 
