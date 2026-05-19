@@ -1,3 +1,5 @@
+// src/os/startMenuItems.js
+
 export const startMenuItems = [
   {
     type: "window",
@@ -21,34 +23,29 @@ export const startMenuItems = [
       },
     ],
   },
-
   {
     type: "window",
     label: "Organizer",
     windowId: "organizer",
   },
-
   {
     type: "window",
-    label: "Mood Log",
-    windowId: "moodLog",
+    label: "Mood Tracker",
+    windowId: "moodTracker",
   },
-
   {
     type: "window",
     label: "PawMail",
     windowId: "pawMail",
   },
-
   {
     type: "window",
     label: "Milestones",
     windowId: "milestones",
   },
-
   {
     type: "window",
-    label: "Projects",
-    windowId: "projects",
+    label: "Other Projects",
+    windowId: "otherProjects",
   },
 ];
